@@ -1,0 +1,79 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "Linux",
+            "displayName": "GCC 15.1.1 x86_64-pc-linux-gnu",
+            "description": "Compiling to Linux using native Compilers",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "/usr/bin/gcc",
+                "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "Windows",
+            "displayName": "MinGW-w64 x86_64-w64-mingw32",
+            "description": "Cross-compiling to Windows using MinGW-w64",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/windows-toolchain.cmake",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_PRESET_NAME": "Windows"
+            }
+        },
+        {
+            "name": "ReleaseLinux",
+            "displayName": "GCC 15.1.1 x86_64-pc-linux-gnu (Release)",
+            "description": "Compiling to Linux using native Compilers in Release mode",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_C_COMPILER": "/usr/bin/gcc",
+                "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "ReleaseWindows",
+            "displayName": "MinGW-w64 x86_64-w64-mingw32 (Release)",
+            "description": "Cross-compiling to Windows using MinGW-w64 in Release mode",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/windows-toolchain.cmake",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_PRESET_NAME": "Windows"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Linux",
+            "description": "",
+            "displayName": "Linux build",
+            "configurePreset": "Linux"
+        },
+        {
+            "name": "Windows",
+            "description": "",
+            "displayName": "Windows build",
+            "configurePreset": "Windows"
+        },
+        {
+            "name": "ReleaseLinux",
+            "description": "",
+            "displayName": "Linux Release build",
+            "configurePreset": "ReleaseLinux"
+        },
+        {
+            "name": "ReleaseWindows",
+            "description": "",
+            "displayName": "Windows Release build",
+            "configurePreset": "ReleaseWindows"
+        }
+    ]
+}
